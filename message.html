@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Status</title>
+ <meta charset="utf-8" />
+ <base target="_self" />
+</head>
+ <body="loaded()">
+
+<script>
+
+function updateStatus(strStatus)
+{
+	var _myMessage = new Array();
+	_myMessage.push(strStatus);
+	parent.postMessage(_myMessage, document.referrer);	
+}
+
+function loaded()
+{
+	var p_URL = "listener.html"; //different value can entered for URL for testing purposes if needed
+	
+	var mapForm = document.createElement("form")
+		mapForm.target = "Map";
+		mapForm.method = "POST";
+		mapForm.action = p_URL;
+			
+		mapForm.style.display = "none";
+		document.body.appendChild(mapForm);
+		
+		map = window.open("", "Map", "status=0,title=0,height=650,width=550,scrollbars=1");
+	
+		if (map) {
+			mapForm.submit();	
+		} else {
+			alert('Popups must be allowed.');
+		}
+};
+
+//need help with getting the message back to this page and to display in the txtStatus textbox
+window.addEventListener('message',function(event) {
+	if(event.origin !== 'http://warpotdevsite.com') return; //this has to come from a domain, not necessarily this one.
+	console.log('message received:  ' + event.data,event);
+	
+	var message = event.data.message;
+	
+	//then I need the value of the message to be parsed into the textbox
+	document.getElementById('txtStatus').value = message;
+	
+	//next I require the function updateStatus(strStatus) to be invoked and pass the value to the parameter
+	updateStatus(message);
+	
+},false);
+
+</script>
+
+    <input type="text" id="txtStatus" style="color:black;border:solid" />
+
+</body>
+</html>

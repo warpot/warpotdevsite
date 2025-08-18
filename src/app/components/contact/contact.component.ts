@@ -23,7 +23,7 @@ import { CommonModule } from '@angular/common';
           <p>
             Richmond, TX 77407 USA<br />
             Phone: 713-501-2824<br />
-            Email: <a href="mailto:www.warreng_2006@yahoo.com">www.warreng_2006@yahoo.com</a>
+            Email: <a href="mailto:www.warreng_2006&#64;yahoo.com">www.warreng_2006&#64;yahoo.com</a>
           </p>
         </div>
       </div>

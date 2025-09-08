@@ -125,6 +125,10 @@ color:#c7dffb;
 line-height:19px;
 padding-bottom:15px;
 }
+.info p.welcome-summary{
+font-weight:600;
+font-family:"Times New Roman", serif;
+}
 
 .main-content{
 width:800px;
